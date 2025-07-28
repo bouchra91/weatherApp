@@ -1,15 +1,70 @@
 .current-weather {
   display: flex;
   flex-direction: column;
-  align-items: start;
-  background-color: #333;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 16px;
-  max-width: 400px;
-  margin: 0 auto;
-  box-shadow:  10px -2px 20px 2px rgba(0, 0, 0, 0.1);
+ align-items:center;
+  width: 100%;
+
+  margin: auto;
+
   border-radius: 6px;
-  color: #ffffff;
+  background-color: transparent;
 }
 
+.card {
+  display: flex;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 890px;
+  justify-content: space-around;
+  background-color:transparent;
+  align-items: center;
+  border-radius: 20px;
+  padding: 40px 0;
+ 
+
+}
+.day {
+  font-size: 20px;
+  font-weight: semi-bold;
+  color: #070000;
+}
+.city {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+.weather-description {
+  font-size: 16px;
+  color: #666;
+}
+
+.weather-icon {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.mini-card {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+width:100%;
+  padding: 0 20px;
+  border-radius: 8px;
+max-width: 860px;
+  gap: 10px;
+ 
+}
+.day-card {
+flex-grow:1;
+  width: 150px;
+  height: 150px;
+  max-width: 200px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 20px;
+  margin-top: -20px;
+  background-color: rgba(255, 255, 255, 0.17);
+  box-shadow: 5px 10px 10px #00000037;
+}

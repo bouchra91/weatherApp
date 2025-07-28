@@ -30,7 +30,7 @@ const Search = ({ onSearchChange }) => {
       }
 
       const data = await response.json();
-console.log(data)
+      console.log(data);
       // Protection contre undefined
       const cities = Array.isArray(data?.data) ? data.data : [];
 
@@ -50,13 +50,16 @@ console.log(data)
   };
 
   return (
-    <AsyncPaginate
-      placeholder="Search for a city..."
-      debounceTimeout={1000} // Réduit la fréquence des requêtes API
-      value={search}
-      onChange={handleOnChange}
-      loadOptions={loadOptions}
-    />
+    <div className="search">
+      <AsyncPaginate
+        placeholder="Search for a city..."
+        debounceTimeout={1000} // Réduit la fréquence des requêtes API
+        value={search}
+        onChange={handleOnChange}
+        loadOptions={loadOptions}
+        className="search-input"
+      />
+    </div>
   );
 };
 
