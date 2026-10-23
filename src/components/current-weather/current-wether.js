@@ -1,6 +1,18 @@
 import "../current-weather/current-weather.css";
 import { useEffect, useState } from "react";
 
+const getWeatherEmoji = (description = "") => {
+  const text = description.toLowerCase();
+
+  if (text.includes("clear") || text.includes("sunny")) return "☀️";
+  if (text.includes("cloud")) return "☁️";
+  if (text.includes("rain") || text.includes("drizzle")) return "🌧️";
+  if (text.includes("storm")) return "⛈️";
+  if (text.includes("snow")) return "❄️";
+  if (text.includes("mist") || text.includes("fog") || text.includes("haze")) return "🌫️";
+  return "🌤️";
+};
+
 const CurrentWeather = ({ city }) => {
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
@@ -17,7 +29,7 @@ const CurrentWeather = ({ city }) => {
         city: data.name,
         temperature: data.main.temp,
         description: data.weather[0].description,
-        icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`,
+        emoji: getWeatherEmoji(data.weather[0].description),
       });
       console.log(data);
     } catch (error) {
@@ -42,7 +54,7 @@ const CurrentWeather = ({ city }) => {
         }),
         temperature: item.main.temp,
         description: item.weather[0].description,
-        icon: `http://openweathermap.org/img/wn/${item.weather[0].icon}.png`,
+        emoji: getWeatherEmoji(item.weather[0].description),
       }))
     );
   };
@@ -55,7 +67,9 @@ const CurrentWeather = ({ city }) => {
   return (
     <div className="current-weather">
       <div className="card">
-        <img alt="weather" className="weather-icon" src={weatherData?.icon} />
+        <div className="weather-emoji" aria-label={weatherData?.description || "Weather icon"}>
+          {weatherData?.emoji || "🌤️"}
+        </div>
         <div className="top">
           <p className="day">Today</p>
           <p className="city">{weatherData?.city || "Loading..."}</p>
@@ -69,22 +83,22 @@ const CurrentWeather = ({ city }) => {
         <div className="mini-card">
           <WeatherDay
             day={forecastData[0]?.day}
-            img={forecastData[0]?.icon}
+            emoji={forecastData[0]?.emoji}
             temp={forecastData[0]?.temperature}
           />
           <WeatherDay
             day={forecastData[1]?.day}
-            img={forecastData[1]?.icon}
+            emoji={forecastData[1]?.emoji}
             temp={forecastData[1]?.temperature}
           />
           <WeatherDay
             day={forecastData[2]?.day}
-            img={forecastData[2]?.icon}
+            emoji={forecastData[2]?.emoji}
             temp={forecastData[2]?.temperature}
           />
           <WeatherDay
             day={forecastData[3]?.day}
-            img={forecastData[3]?.icon}
+            emoji={forecastData[3]?.emoji}
             temp={forecastData[3]?.temperature}
           />
         </div>
@@ -93,12 +107,12 @@ const CurrentWeather = ({ city }) => {
   );
 };
 
-const WeatherDay = ({ day, img, temp }) => {
+const WeatherDay = ({ day, emoji, temp }) => {
   return (
     <div className="day-card">
       <p className="wDay">{day}</p>
-      <img src={img} alt="icon-w" className="imgW" />
-      <p className="tempW">{temp}</p>
+      <div className="imgW" aria-label="forecast weather icon">{emoji}</div>
+      <p className="tempW">{temp}°C</p>
     </div>
   );
 };

@@ -10,6 +10,7 @@ function App() {
     console.log("Search Data:", searchData.label.slice(0, -4));
     setSearchDataI(searchData.label.slice(0, -4)); // Extrait le nom de la ville
   };
+
   return (
     <div className="container">
       <Search onSearchChange={handleSearchChange} />

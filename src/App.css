@@ -1,32 +1,97 @@
 .container {
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-
-  justify-content: baseline;
-  align-items: space-between;
-  min-height: 100vh;
-  background-image: url("C:/Users/TEST/Documents/weatherv2/public/weather-image/images/background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  margin: 0;
-  background-attachment: fixed;
-  overflow: auto;
-}
-
-.search {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 800px;
-  margin: auto;
-
-  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 20px;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  min-height: 100vh;
+  padding: 28px 20px 72px;
+  margin: 0;
+  overflow: visible;
+  background: radial-gradient(circle at top, rgba(96, 144, 255, 0.25), transparent 35%),
+    linear-gradient(135deg, #050b14 0%, #101c2d 28%, #16273d 58%, #20395d 100%);
 }
+
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 15%, rgba(255,255,255,0.08), transparent 20%);
+  pointer-events: none;
+}
+
+.search,
+.current-weather {
+  position: relative;
+  width: min(980px, 100%);
+}
+
+.search {
+  order: 1;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(780px, 100%);
+  margin: 0 auto;
+}
+
+.current-weather {
+  order: 2;
+  z-index: 1;
+}
+
 .search-input {
   width: 100%;
+}
+
+.search-input .react-select__control {
+  min-height: 62px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  background: rgba(10, 14, 22, 0.8);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(12px);
+}
+
+.search-input .react-select__control:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.search-input .react-select__control--is-focused {
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 3px rgba(160, 200, 255, 0.18);
+}
+
+.search-input .react-select__placeholder,
+.search-input .react-select__single-value,
+.search-input .react-select__menu {
+  color: #f4f8ff;
+}
+
+.search-input .react-select__input-container {
+  color: #ffffff;
+}
+
+.search-input .react-select__menu {
+  background: rgba(14, 20, 30, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  color: #f4f8ff;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.26);
+}
+
+.search-input .react-select__option {
+  color: #f4f8ff;
+  background: transparent;
+  padding: 12px 14px;
+}
+
+.search-input .react-select__option--is-focused {
+  background: rgba(170, 200, 255, 0.12);
+}
+
+.search-input .react-select__option--is-selected {
+  background: rgba(120, 170, 255, 0.22);
 }

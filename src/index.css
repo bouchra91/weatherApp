@@ -1,10 +1,22 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
-  font-family:"Roboto" , Arial !important ;
-  background-color: aliceblue;
-  }
+  min-height: 100vh;
+  font-family: "Roboto", Arial, sans-serif;
+  background: #050b14;
+}
+
+button, input, select {
+  font: inherit;
+}
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
